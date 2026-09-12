@@ -28,7 +28,8 @@ function exibirMenu() {
                 exibirMenu();
                 break;
             case '2':
-                console.log("Seu saldo atual: " + saldo + "R$");
+                const numValor = parseFloat(saldo);
+                console.log("Seu saldo atual: " + numValor + "R$");
                 exibirMenu();
                 break;
             case '3':
@@ -37,33 +38,36 @@ function exibirMenu() {
 
                     if(isNaN(numValor) || numValor <= 0){
                         console.log("Valor inválido, tente novamente");
+                        exibirMenu();
                     }
 
                     else if(numValor > saldo){
                         console.log("Saldo insuficiente!");
+                        exibirMenu();
                     }
 
                     else{
                         saldo -= numValor;
                         console.log(`\nSaque de R$ ${numValor.toFixed(2)} realizado com sucesso!`);
+                        exibirMenu();
                     }
                 });
-                exibirMenu();
                 break;
             case '4':
-                rl.question("\nDigite o valor que deseja sacar: R$ ",(valor) =>{
+                rl.question("\nDigite o valor que deseja depositar: R$ ",(valor) =>{
                     const numValor = parseFloat(valor);
 
                     if(isNaN(numValor) || numValor < 0){
                         console.log("Valor inválido");
+                        exibirMenu();
                     }
 
                     else{
                         saldo += numValor;
                         console.log(`\nDepósito de R$ ${numValor.toFixed(2)} realizado com sucesso!`);
+                        exibirMenu();
                     }
                 });
-                exibirMenu();
                 break;
             case '5':
                 console.log("Saindo do programa...");
